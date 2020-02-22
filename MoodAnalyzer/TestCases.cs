@@ -21,44 +21,10 @@ namespace MoodAnalyzer
         [Test]
         public void Test2()
         {
-            Assert.AreEqual("sad", t.Mood("I am in any mood"));
-            Console.WriteLine("sad");
-        }
-        [Test]
-        public void Test3()
-        {
-            Assert.AreEqual("sad", t.Mood( "any mode "));
-            Console.WriteLine("sad");
-        }
-        [Test]
-        public void TestConstructor1()
-        {
-            MoodTest t2 = new MoodTest("I am in happy mode");
-            Assert.AreEqual("happy", t2.Mood());
+            Assert.AreEqual("happy", t.Mood("I am in any mood"));
             Console.WriteLine("happy");
         }
-        [Test]
-        public void TestConstructor2()
-        {
-            MoodTest t2 = new MoodTest("I am in sad mode");
-            Assert.AreEqual("sad", t2.Mood());
-            Console.WriteLine("sad");
-        }
-        [Test]
-        public void TestConstructor3()
-        {
-            MoodTest t2 = new MoodTest( );
-            try
-            {
-                Assert.AreEqual("sad", t2.Mood());
-                Console.WriteLine("sad");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-          
-        }
+      
+      
     }
 }
