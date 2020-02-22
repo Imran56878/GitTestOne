@@ -22,8 +22,8 @@ namespace MoodAnalyzer
         {
             if (msg==null)
             {
-              //  msg = "happy";
-               throw new MoodAnalyseException ("no mood");
+              msg = "happy";
+               throw new MoodAnalyseException ("Invalid mood null");
 
             }
              return msg;
