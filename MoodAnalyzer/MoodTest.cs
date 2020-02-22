@@ -19,14 +19,22 @@ namespace MoodAnalyzer
                 msg = "happy";
         }
         public string  Mood ( )
-        {
-            if (msg==null)
+         {
+            try
             {
-              msg = "happy";
-               throw new MoodAnalyseException ("Invalid mood null");
+                if (msg == null)
+                {
+                    msg = "happy";
+                    throw new MoodAnalyseException("Invalid mood null");
+                }
+               
+             }
+                  catch (MoodAnalyseException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
-            }
-             return msg;
+            return msg;
         }
         public string Mood(string message )
         {

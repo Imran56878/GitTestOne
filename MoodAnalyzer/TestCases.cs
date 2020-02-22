@@ -50,10 +50,10 @@ namespace MoodAnalyzer
             MoodTest t2 = new MoodTest( );
             try
             {
-                Assert.AreEqual("sad", t2.Mood());
-                Console.WriteLine("sad");
+                Assert.AreEqual("happy", t2.Mood());
+                Console.WriteLine("happy");
             }
-            catch (Exception e)
+            catch (MoodAnalyseException  e)
             {
                 Console.WriteLine(e.Message);
             }
