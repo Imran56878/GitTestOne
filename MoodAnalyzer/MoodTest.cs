@@ -25,14 +25,14 @@ namespace MoodAnalyzer
         /// <summary>  This is empty mood checking method </summary>
         public string Mood()
         {
+            if (this.msg == null)
+            {
+                this.msg = "happy";
+            }
             try
             {
-                if (this.msg == null)
-                {
-                    this.msg = "happy";
-                    throw new MoodAnalyseException("Invalid mood null");
-                }
-
+                if (msg.Length == 0)
+                    throw new MoodAnalyseException("Invalid input");
             }
             catch (MoodAnalyseException e)
             {

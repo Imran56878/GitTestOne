@@ -1,3 +1,4 @@
+using MoodAnalyzer.NewFolder;
 using NUnit.Framework;
 using System;
 
@@ -5,16 +6,16 @@ namespace MoodAnalyzer
 {
     public class TestCases
     {
-      readonly   MoodTest t = new MoodTest();
+        readonly MoodTest t = new MoodTest();
         [SetUp]
         public void Setup()
         {
         }
 
         [Test]
-        public void Test1 ()
+        public void Test1()
         {
-            Assert.AreEqual("sad",t.Mood ("I am in Sad mood"));
+            Assert.AreEqual("sad", t.Mood("I am in Sad mood"));
             Console.WriteLine("sad");
         }
 
@@ -27,7 +28,7 @@ namespace MoodAnalyzer
         [Test]
         public void Test3()
         {
-            Assert.AreEqual("sad", t.Mood( "any mode "));
+            Assert.AreEqual("sad", t.Mood("any mode "));
             Console.WriteLine("sad");
         }
         [Test]
@@ -47,18 +48,43 @@ namespace MoodAnalyzer
         [Test]
         public void TestConstructor3()
         {
-            MoodTest t2 = new MoodTest( );
+            MoodTest t2 = new MoodTest();
             try
             {
                 Assert.AreEqual("happy", t2.Mood());
                 Console.WriteLine("happy");
             }
-            catch (MoodAnalyseException  e)
+            catch (MoodAnalyseException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-          
+
+        }
+        MoodTest2 d = new MoodTest2();
+        [Test]
+        public void TestA1()
+        { 
+            try
+            {
+                Assert.AreEqual("sad", d.Mood(""));
+            }
+            catch (MoodAnalyseException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        [Test]
+        public void TestA2()
+        {
+            try
+            {
+                Assert.AreEqual("happy", d.Mood());
+            }
+            catch (MoodAnalyseException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
