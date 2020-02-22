@@ -6,7 +6,7 @@ namespace MoodAnalyzer.NewFolder
 {
     class MoodTest2
     {
-        string msg1;
+      readonly string msg1;
         public MoodTest2()
         {
 
@@ -14,9 +14,9 @@ namespace MoodAnalyzer.NewFolder
         public MoodTest2 (string message)
         {
             if (message.ToLower().Contains("sad"))
-                msg1 = "sad";
+               this.msg1 = "sad";
             else if (message.ToLower().Contains("happy"))
-                msg1 = "happy";
+                this.msg1 = "happy";
         }
 
     }

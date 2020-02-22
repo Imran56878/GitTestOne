@@ -4,58 +4,68 @@ using System.Text;
 
 namespace MoodAnalyzer
 {
-    class MoodTest
+    /// <summary>  This class is for to checking for mood </summary>
+    public class MoodTest
     {
         string msg;
-       public  MoodTest()
+
+        /// <summary>  This is parametrize constructor </summary>
+        public MoodTest()
         {
 
         }
         public MoodTest(string message)
         {
             if (message.ToLower().Contains("sad"))
-                msg = "sad";
+                this.msg = "sad";
             else if (message.ToLower().Contains("happy"))
-                msg = "happy";
+                this.msg = "happy";
         }
-        public string  Mood ( )
-         {
+
+        /// <summary>  This is empty mood checking method </summary>
+        public string Mood()
+        {
             try
             {
-                if (msg == null)
+                if (this.msg == null)
                 {
-                    msg = "happy";
+                    this.msg = "happy";
                     throw new MoodAnalyseException("Invalid mood null");
                 }
-               
-             }
-                  catch (MoodAnalyseException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
 
-            return msg;
+            }
+            catch (MoodAnalyseException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return this.msg;
         }
-        public string Mood(string message )
+
+        /// <summary>parametrize mood asnalyse method </summary>
+        public string Mood(string message)
         {
             if (message.ToLower().Contains("sad"))
             {
-                msg = "sad";
+                this.msg = "sad";
             }
-            else if (message.ToLower().Contains("happy") )
-                {
-                msg = "happy";
+            else if (message.ToLower().Contains("happy"))
+            {
+                this.msg = "happy";
             }
             else
             {
-                msg = "sad";
+                this.msg = "sad";
             }
-            return msg;
+            return this.msg;
         }
     }
-    class MoodAnalyseException : Exception
+
+    /// <summary>  custom Exception class </summary>
+    public class MoodAnalyseException : Exception
     {
-        public MoodAnalyseException(string message) : base(message )
+        /// <summary>  custom Exception constructor </summary>
+        public MoodAnalyseException(string message) : base(message)
         {
 
         }
