@@ -27,38 +27,17 @@ namespace MoodAnalyzer
         {
             if (this.msg == null)
             {
-                this.msg = "happy";
+                throw new MoodAnalyseException("nullException");
             }
-            try
+            else if (msg ==String.Empty)
             {
-                if (msg.Length == 0)
-                    throw new MoodAnalyseException("Invalid input");
+                throw new MoodAnalyseException("EmptyString");
             }
-            catch (MoodAnalyseException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
             return this.msg;
         }
 
         /// <summary>parametrize mood asnalyse method </summary>
-        public string Mood(string message)
-        {
-            if (message.ToLower().Contains("sad"))
-            {
-                this.msg = "sad";
-            }
-            else if (message.ToLower().Contains("happy"))
-            {
-                this.msg = "happy";
-            }
-            else
-            {
-                this.msg = "sad";
-            }
-            return this.msg;
-        }
+       
     }
 
     /// <summary>  custom Exception class </summary>
