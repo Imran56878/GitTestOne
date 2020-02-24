@@ -10,12 +10,22 @@ namespace ModeAnalyzerConsoleTest
         {
             Console.WriteLine("Enter a string");
             string st = Console.ReadLine();
-            MoodTest  tc = new MoodTest(st);
+            MoodAnalyser  tc = new MoodAnalyser(st);
+            MoodAnalyser tc1 = new MoodAnalyser();
             try
             {
               Console.WriteLine(  tc.Mood ());
             }
-            catch (MoodAnalyseException e)
+            catch (MoodAnalyzerException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+          
+            try
+            {
+                Console.WriteLine(tc1.Mood());
+            }
+            catch (MoodAnalyzerException e)
             {
                 Console.WriteLine(e.Message);
             }
