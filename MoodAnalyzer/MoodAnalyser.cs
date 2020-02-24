@@ -5,21 +5,29 @@ using System.Text;
 namespace MoodAnalyzer
 {
     /// <summary>  This class is for to checking for mood </summary>
-    public class MoodTest
+    public class MoodAnalyser
     {
-        string msg;
+        private readonly string msg;
+     /*  public enum Value_Exception{
+            Null_Reference_Exception,
+            Empty_Exception
+            }*/
 
         /// <summary>  This is parametrize constructor </summary>
-        public MoodTest()
+        public MoodAnalyser()
         {
 
         }
-        public MoodTest(string message)
+        public MoodAnalyser(string message)
         {
+            this.msg = message;
             if (message.ToLower().Contains("sad"))
                 this.msg = "sad";
             else if (message.ToLower().Contains("happy"))
                 this.msg = "happy";
+            else if(message.Length !=0)
+                this.msg= "happy";
+        
         }
 
         /// <summary>  This is empty mood checking method </summary>
@@ -27,13 +35,13 @@ namespace MoodAnalyzer
         {
             if (this.msg == null)
             {
-                throw new MoodAnalyseException("nullException");
+                throw new MoodAnalyzerException("nullException");
             }
-            else if (msg ==String.Empty)
+            else if (msg.Length == 0)
             {
-                throw new MoodAnalyseException("EmptyString");
+                throw new MoodAnalyzerException("EmptyString");
             }
-            return this.msg;
+              return this.msg;     
         }
 
         /// <summary>parametrize mood asnalyse method </summary>
@@ -41,12 +49,13 @@ namespace MoodAnalyzer
     }
 
     /// <summary>  custom Exception class </summary>
-    public class MoodAnalyseException : Exception
+    public class MoodAnalyzerException : Exception
     {
         /// <summary>  custom Exception constructor </summary>
-        public MoodAnalyseException(string message) : base(message)
+        public MoodAnalyzerException(string message) : base(message)
         {
 
         }
     }
 }
+                                

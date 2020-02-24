@@ -1,17 +1,18 @@
 using NUnit.Framework;
 using System;
-
+using static MoodAnalyzer.MoodAnalyser;
 namespace MoodAnalyzer
 {
     public class TestCases
     {
-        MoodTest t1 = new MoodTest("I am in happy mood");
-        MoodTest t2 = new MoodTest("I am in sad mood");
-        MoodTest t3 = new MoodTest();
-        MoodTest d = new MoodTest("");
+        MoodAnalyser t1 = new MoodAnalyser("I am in happy mood");
+        MoodAnalyser t2 = new MoodAnalyser("I am in sad mood");
+        MoodAnalyser t3 = new MoodAnalyser();
+        MoodAnalyser d = new MoodAnalyser("");
         [SetUp]
         public void Setup()
         {
+            Console.WriteLine("");
         }
 
         [Test]
@@ -33,8 +34,9 @@ namespace MoodAnalyzer
             {
                 Assert.AreEqual("nullException", t3.Mood());
             }
-            catch (MoodAnalyseException e)
+            catch (MoodAnalyzerException e)
             {
+               // Console.WriteLine(value_Exception.Null_Reference_Exception);
                 Console.WriteLine(e.Message);
             }
 
@@ -47,10 +49,17 @@ namespace MoodAnalyzer
             {
                 Assert.AreEqual("EmptyString",d.Mood());
             }
-            catch (MoodAnalyseException e)
+            catch (MoodAnalyzerException e)
             {
+                //Console.WriteLine(nullException.Empty_Exception);
                 Console.WriteLine(e.Message);
             }
+        }
+        [Test]
+        public void  CheckObject()
+        {
+            Type t = typeof(MoodAnalyser ).GetType() ;
+            Assert.AreEqual("","");
         }
       
     }
