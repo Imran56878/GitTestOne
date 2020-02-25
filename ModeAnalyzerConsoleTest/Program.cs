@@ -29,7 +29,19 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
-           
+            TestCases t = new TestCases();
+            t.CheckObject();
+            MoodAnalyseFactory mf = new MoodAnalyseFactory();
+            try
+            {
+                mf.AnalyseFactory();
+            }
+            catch (MoodAnalyzerException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            int a = 123;
+           Console.WriteLine( a.GetType().FullName);
 
         }
     }
