@@ -46,22 +46,24 @@ namespace MoodAnalyzer
             var refObj = ma.AnalyseFactory("MoodAnalyser");
             return refObj.GetType().Equals(obj.GetType());
         }
-        public  bool WrongConstructorInfo( string a)
+        public  bool WrongConstructorInfo( int a)
         {
-            Type t = Type.GetType("MoodAnalyzer.MoodAnalyser");
+            Type t = Type.GetType("MoodAnalyzer.MoodAnalyseFactory");
             ConstructorInfo[] constructors = t.GetConstructors();
              foreach(ConstructorInfo constructor in constructors )
              {
-               if (constructor.Name.GetType().Equals(a.GetType().FullName))
+              ParameterInfo [] parameters=  constructor.GetParameters();
+                foreach (ParameterInfo parameter in parameters)
                 {
-                    Console.WriteLine(true);
-                    return true;
+                    Console.WriteLine(parameter.ParameterType);
+                    if (parameter.ParameterType.Equals(a.GetType()))
+                    {
+                        Console.WriteLine(true);
+                        return true;
+                    }
                 }
              }
             throw new MoodAnalyzerException("No_Such_Constructor_Found", MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error);
-          /*  Console.WriteLine(constructors[0].Equals("System.String"));
-            Console.WriteLine(constructors[1].Equals("System.String"));
-*/
         }
 
         /// <summary>parametrize mood asnalyse method </summary>

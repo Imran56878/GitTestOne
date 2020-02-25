@@ -57,8 +57,17 @@ namespace MoodAnalyzer
         [Test]
         public void CheckConstructorParameter()
         {
-            var val3 = Assert.Throws<MoodAnalyzerException>(() => d.WrongConstructorInfo ("imran"));
-            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error, val3.va);
+             var val3 = Assert.Throws<MoodAnalyzerException>(() => d.WrongConstructorInfo (6867));
+             Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error, val3.va);
+       
+           /* try
+            {
+                d.WrongConstructorInfo(4545);
+            }
+            catch (MoodAnalyzerException e)
+            {
+                Console.WriteLine(e.Message);
+            }*/
         }
       
     }

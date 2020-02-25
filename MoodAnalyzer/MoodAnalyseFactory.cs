@@ -12,10 +12,6 @@ namespace MoodAnalyzer
         {
 
         }
-        public MoodAnalyseFactory(int a)
-        {
-            b=a;
-        }
         public MoodAnalyseFactory(string str2)
         {
 
