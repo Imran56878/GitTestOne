@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using System;
-using static MoodAnalyzer.MoodAnalyser;
+//using ModeAnalyzerConsoleTest;
 namespace MoodAnalyzer
 {
     public class TestCases
@@ -9,6 +9,9 @@ namespace MoodAnalyzer
         MoodAnalyser t2 = new MoodAnalyser("I am in sad mood");
         MoodAnalyser t3 = new MoodAnalyser();
         MoodAnalyser d = new MoodAnalyser("");
+
+      //  public object MoodAnalyseFactory { get; private set; }
+
         [SetUp]
         public void Setup()
         {
@@ -30,22 +33,24 @@ namespace MoodAnalyzer
         [Test]
         public void Test3()
         {
-            try
-            {
-                Assert.AreEqual("nullException", t3.Mood());
-            }
-            catch (MoodAnalyzerException e)
-            {
-               // Console.WriteLine(value_Exception.Null_Reference_Exception);
-                Console.WriteLine(e.Message);
-            }
-
+             /*try
+             {
+                 Assert.AreEqual("nullException", t3.Mood());
+             }
+             catch (MoodAnalyzerException e)
+             {
+                 Console.WriteLine(e.Message);
+             }*/
+            MoodAnalyser moodtest = new MoodAnalyser( );
+            var val = Assert.Throws<MoodAnalyzerException>(() => moodtest.Mood());
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Null_Reference_Exception,val.va);
+           
         }
     
         [Test]
         public void Test4()
         {
-            try
+           /* try
             {
                 Assert.AreEqual("EmptyString",d.Mood());
             }
@@ -53,13 +58,28 @@ namespace MoodAnalyzer
             {
                 //Console.WriteLine(nullException.Empty_Exception);
                 Console.WriteLine(e.Message);
-            }
+            }*/
+            MoodAnalyser moodtest = new MoodAnalyser("");
+            var val2 = Assert.Throws<MoodAnalyzerException>(() => moodtest.Mood());
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val2.va);
         }
         [Test]
         public void  CheckObject()
         {
-            Type t = typeof(MoodAnalyser ).GetType() ;
-            Assert.AreEqual("","");
+            /* MoodAnalyser ma = new MoodAnalyser();                                                                                
+             try {
+                 Type t = typeof(MoodAnalyser).GetType();
+                 var obj = Activator.CreateInstance(t);
+                 Assert.AreEqual(ma.GetType(), obj.GetType());
+             }
+             catch (Exception e)
+             {
+                 Console.WriteLine(e.Message);
+             }*/
+            MoodAnalyser testmood = new MoodAnalyser();
+            var test = testmood.Equals(testmood);
+            Assert.IsTrue(test);
+          
         }
       
     }

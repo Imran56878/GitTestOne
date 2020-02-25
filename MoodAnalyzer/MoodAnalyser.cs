@@ -8,10 +8,7 @@ namespace MoodAnalyzer
     public class MoodAnalyser
     {
         private readonly string msg;
-     /*  public enum Value_Exception{
-            Null_Reference_Exception,
-            Empty_Exception
-            }*/
+     
 
         /// <summary>  This is parametrize constructor </summary>
         public MoodAnalyser()
@@ -35,13 +32,18 @@ namespace MoodAnalyzer
         {
             if (this.msg == null)
             {
-                throw new MoodAnalyzerException("nullException");
+                throw new MoodAnalyzerException("nullException",MoodAnalyzerException.Value_Exception.Null_Reference_Exception);
             }
             else if (msg.Length == 0)
             {
-                throw new MoodAnalyzerException("EmptyString");
+                throw new MoodAnalyzerException("EmptyString",MoodAnalyzerException.Value_Exception.Empty_Exception);
             }
               return this.msg;     
+        }
+        public override bool Equals(object  obj)
+        {
+            var refObj = MoodAnalyseFactory.AnalyseFactory("MoodAnalyser");
+            return refObj.GetType().Equals(obj.GetType());
         }
 
         /// <summary>parametrize mood asnalyse method </summary>
@@ -52,9 +54,24 @@ namespace MoodAnalyzer
     public class MoodAnalyzerException : Exception
     {
         /// <summary>  custom Exception constructor </summary>
-        public MoodAnalyzerException(string message) : base(message)
+        /// 
+        public enum Value_Exception
         {
+            Null_Reference_Exception,
+            Empty_Exception,
+            No_Such_Class_Error,
+            No_Such_Method_Error
+        }
+        public Value_Exception va;
+        private readonly string ex;
+        /* public MoodAnalyzerException(string message) : base(message)
+         {
 
+         }*/
+        public MoodAnalyzerException(string exc, Value_Exception values) : base(exc)
+        {
+        this.va=values;
+            this.ex = exc;
         }
     }
 }
