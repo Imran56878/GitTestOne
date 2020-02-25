@@ -8,7 +8,7 @@ namespace ModeAnalyzerConsoleTest
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a string");
+           Console.WriteLine("Enter a string");
             string st = Console.ReadLine();
             MoodAnalyser  tc = new MoodAnalyser(st);
             MoodAnalyser tc1 = new MoodAnalyser();
@@ -29,6 +29,7 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
+           
 
         }
     }
