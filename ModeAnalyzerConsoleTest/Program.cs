@@ -5,22 +5,22 @@ namespace ModeAnalyzerConsoleTest
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
-           Console.WriteLine("Enter a string");
+            Console.WriteLine("Enter a string");
             string st = Console.ReadLine();
-            MoodAnalyser  tc = new MoodAnalyser(st);
+            MoodAnalyser tc = new MoodAnalyser(st);
             MoodAnalyser tc1 = new MoodAnalyser();
             try
             {
-              Console.WriteLine(  tc.Mood ());
+                Console.WriteLine(tc.Mood());
             }
             catch (MoodAnalyzerException e)
             {
                 Console.WriteLine(e.Message);
             }
-          
+
             try
             {
                 Console.WriteLine(tc1.Mood());
@@ -31,7 +31,7 @@ namespace ModeAnalyzerConsoleTest
             }
             TestCases t = new TestCases();
             t.CheckObject();
-            MoodAnalyseFactory mf = new MoodAnalyseFactory();
+            MoodAnalyserReflector mf = new MoodAnalyserReflector();
             try
             {
                 mf.AnalyseFactory();
@@ -40,8 +40,17 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
-            int a = 123;
-           Console.WriteLine( a.GetType().FullName);
+            /*  int a = 123;
+             Console.WriteLine( a.GetType().FullName);*/
+            try
+            {
+                var a = tc1.NOMethod();
+            }
+
+            catch (MoodAnalyzerException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
     }
