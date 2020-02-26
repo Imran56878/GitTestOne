@@ -51,6 +51,14 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
+            try
+            {
+                mf.ShowMessage(null);
+            }
+            catch(NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
     }
