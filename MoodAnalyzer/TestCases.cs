@@ -9,7 +9,6 @@ namespace MoodAnalyzer
         MoodAnalyser t3 = new MoodAnalyser();
         MoodAnalyser d = new MoodAnalyser("");
 
-
         [SetUp]
         public void Setup()
         {
@@ -70,6 +69,27 @@ namespace MoodAnalyzer
         {
             var val4 = Assert.Throws<MoodAnalyzerException>(() => t1.NOMethod());
             Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Method_Error, val4.va);
+        }
+        [Test]
+        public void MessageReflector()
+        {
+            MoodAnalyserReflector m = new MoodAnalyserReflector();
+            m.ShowMessage("I am happy ");
+        }
+        [Test]
+        public void ReflectorNullRException()
+        {
+            MoodAnalyserReflector m1 = new MoodAnalyserReflector();
+            var val5 = Assert.Throws<MoodAnalyzerException>(() => m1.ShowMessage(null));
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Null_Reference_Exception, val5.va);
+        }
+        [Test]
+        public void ReflectorEmptyException()
+        {
+            MoodAnalyserReflector m = new MoodAnalyserReflector();
+            var val6 = Assert.Throws<MoodAnalyzerException>(() => m.ShowMessage(""));
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val6.va);
+            Console.WriteLine(val6);
         }
 
     }
