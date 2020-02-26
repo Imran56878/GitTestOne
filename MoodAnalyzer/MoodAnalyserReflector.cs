@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Text;
 namespace MoodAnalyzer
 {
-    public class MoodAnalyseFactory
+    public class MoodAnalyserReflector
     {
         string str;
         int b;
-        public MoodAnalyseFactory()
+        public MoodAnalyserReflector()
         {
 
         }
-        public MoodAnalyseFactory(string str2)
+        public MoodAnalyserReflector(string str2)
         {
 
             this.str = str2;
