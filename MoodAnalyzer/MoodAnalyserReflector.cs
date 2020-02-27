@@ -46,38 +46,22 @@ namespace MoodAnalyzer
             {
                 Type tm = Type.GetType("MoodAnalyzer.MoodAnalyser");
                 object testInstance = Activator.CreateInstance(tm, meesage1);
-                MethodInfo methods = tm.GetMethod("Mood");
+                MethodInfo? methods = tm.GetMethod("Mood");
                 var a = methods.Invoke(testInstance, null);
                 Console.WriteLine(a);
             }
             else if (meesage1 == null)
             {
-
+                Console.WriteLine("jkhuig");
                 throw new MoodAnalyzerException("nullException", MoodAnalyzerException.Value_Exception.Null_Reference_Exception);
             }
             else if (meesage1.Length == 0)
             {
+                Console.WriteLine("Imran");
                 throw new MoodAnalyzerException("EmptyString", MoodAnalyzerException.Value_Exception.Empty_Exception);
             }
 
         }
-        public void ShowMessage1(string message2)
-        {
-            Type tm = Type.GetType("MoodAnalyzer.MoodAnalyser");
-            object testInstance = Activator.CreateInstance(tm, message2);
-            try
-            {
-                MethodInfo methods = tm.GetMethod("Mood");
-                var a = methods.Invoke(testInstance, null);
-                Console.WriteLine(a);
-            }
-            catch (NullReferenceException e)
-            {
-                throw new MoodAnalyzerException("nullException", MoodAnalyzerException.Value_Exception.Null_Reference_Exception);
-            }
 
-
-        }
     }
-
 }
