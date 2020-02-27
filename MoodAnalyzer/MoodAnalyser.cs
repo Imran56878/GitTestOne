@@ -46,6 +46,7 @@ namespace MoodAnalyzer
             var refObj = ma.AnalyseFactory("MoodAnalyser");
             return refObj.GetType().Equals(obj.GetType());
         }
+        ///<summary> It will check the type of paramter of constructor if found return true or throw excetion in last</summary>
         public bool WrongConstructorInfo(int a)
         {
             Type t = Type.GetType("MoodAnalyzer.MoodAnalyserReflector");
@@ -93,10 +94,10 @@ namespace MoodAnalyzer
             }
 
         }
+
         /// <summary>parametrize mood asnalyse method </summary>
 
     }
-
     /// <summary>  custom Exception class </summary>
     public class MoodAnalyzerException : Exception
     {
