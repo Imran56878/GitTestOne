@@ -36,9 +36,6 @@ namespace MoodAnalyzer
                 Console.WriteLine(e.Message);
                 throw new MoodAnalyzerException("No such class found ", MoodAnalyzerException.Value_Exception.No_Such_Class_Error);
             }
-
-
-
         }
         public void ShowMessage(string meesage1)
         {
@@ -46,18 +43,16 @@ namespace MoodAnalyzer
             {
                 Type tm = Type.GetType("MoodAnalyzer.MoodAnalyser");
                 object testInstance = Activator.CreateInstance(tm, meesage1);
-                MethodInfo? methods = tm.GetMethod("Mood");
+                MethodInfo methods = tm.GetMethod("Mood");
                 var a = methods.Invoke(testInstance, null);
                 Console.WriteLine(a);
             }
             else if (meesage1 == null)
             {
-                Console.WriteLine("jkhuig");
                 throw new MoodAnalyzerException("nullException", MoodAnalyzerException.Value_Exception.Null_Reference_Exception);
             }
             else if (meesage1.Length == 0)
             {
-                Console.WriteLine("Imran");
                 throw new MoodAnalyzerException("EmptyString", MoodAnalyzerException.Value_Exception.Empty_Exception);
             }
 

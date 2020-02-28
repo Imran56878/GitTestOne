@@ -16,19 +16,19 @@ namespace MoodAnalyzer
         }
 
         [Test]
-        public void Test1()
+        public void HappyMessage()
         {
             Assert.AreEqual("happy", t1.Mood());
 
         }
 
         [Test]
-        public void Test2()
+        public void SadMessage()
         {
             Assert.AreEqual("sad", t2.Mood());
         }
         [Test]
-        public void Test3()
+        public void Nullexception()
         {
             MoodAnalyser moodtest = new MoodAnalyser();
             var val = Assert.Throws<MoodAnalyzerException>(() => moodtest.Mood());
@@ -37,7 +37,7 @@ namespace MoodAnalyzer
         }
 
         [Test]
-        public void Test4()
+        public void EmptyException()
         {
 
             MoodAnalyser moodtest = new MoodAnalyser("");
