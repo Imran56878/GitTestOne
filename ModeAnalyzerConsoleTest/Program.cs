@@ -11,7 +11,12 @@ namespace ModeAnalyzerConsoleTest
             Console.WriteLine("Enter a string");
             string st = Console.ReadLine();
             MoodAnalyser tc = new MoodAnalyser(st);
-            MoodAnalyser tc1 = new MoodAnalyser();
+            MoodAnalyser tcons = new MoodAnalyser();
+            /// <summary>
+            /// it will check mood at run time 
+            /// and handle excption if 
+            /// any exception occur
+            /// </summary>>
             try
             {
                 Console.WriteLine(tc.Mood());
@@ -20,10 +25,12 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
-
+            /// <summary>
+            /// it will handle null refernce exception
+            /// </summary>>
             try
             {
-                Console.WriteLine(tc1.Mood());
+                Console.WriteLine(tcons.Mood());
             }
             catch (MoodAnalyzerException e)
             {
@@ -31,6 +38,10 @@ namespace ModeAnalyzerConsoleTest
             }
             TestCases t = new TestCases();
             t.CheckObject();
+            /// <summary>
+            /// it will check mood using reflector
+            /// and handle exception
+            /// </summary>>
             MoodAnalyserReflector mf = new MoodAnalyserReflector();
             try
             {
@@ -40,22 +51,27 @@ namespace ModeAnalyzerConsoleTest
             {
                 Console.WriteLine(e.Message);
             }
-            /*  int a = 123;
-             Console.WriteLine( a.GetType().FullName);*/
+            ///<summary>
+            /// it check the method is not found
+            /// </summary>>
             try
             {
-                var a = tc1.NOMethod();
+                var a = tcons.NOMethod();
             }
 
             catch (MoodAnalyzerException e)
             {
                 Console.WriteLine(e.Message);
             }
+            /// <summary>
+            /// it handle null reference exception using 
+            /// reflection
+            /// </summary>>
             try
             {
                 mf.ShowMessage(null);
             }
-            catch(NullReferenceException e)
+            catch (NullReferenceException e)
             {
                 Console.WriteLine(e.Message);
             }
