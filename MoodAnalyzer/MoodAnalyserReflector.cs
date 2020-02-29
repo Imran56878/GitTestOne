@@ -9,15 +9,32 @@ namespace MoodAnalyzer
     {
         string str;
         int b;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MoodAnalyserReflector"/> class.
+        /// </summary>
         public MoodAnalyserReflector()
         {
 
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MoodAnalyserReflector"/> class.
+        /// </summary>
+        /// <param name="str2">The STR2.</param>
         public MoodAnalyserReflector(string str2)
         {
 
             this.str = str2;
         }
+        /// <summary>
+        /// Analyses the factory.
+        /// </summary>
+        /// <param name="para">The para.</param>
+        /// <returns></returns>
+        /// <exception cref="MoodAnalyzer.MoodAnalyzerException">
+        /// Input parameter sould not be null
+        /// or
+        /// No such class found
+        /// </exception>
         public Object AnalyseFactory(params string[] para)
         {
             try
@@ -37,6 +54,16 @@ namespace MoodAnalyzer
                 throw new MoodAnalyzerException("No such class found ", MoodAnalyzerException.Value_Exception.No_Such_Class_Error);
             }
         }
+        /// <summary>
+        /// Shows the message by using reflection
+        ///   or handle exception
+        /// </summary>
+        /// <param name="meesage1">The meesage1.</param>
+        /// <exception cref="MoodAnalyzer.MoodAnalyzerException">
+        /// nullException
+        /// or
+        /// EmptyString
+        /// </exception>
         public void ShowMessage(string meesage1)
         {
             if (meesage1.Length != 0)

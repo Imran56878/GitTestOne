@@ -94,9 +94,6 @@ namespace MoodAnalyzer
             }
 
         }
-
-        /// <summary>parametrize mood asnalyse method </summary>
-
     }
     /// <summary>  custom Exception class </summary>
     public class MoodAnalyzerException : Exception
@@ -113,7 +110,11 @@ namespace MoodAnalyzer
         }
         public Value_Exception va;
         private readonly string ex;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MoodAnalyzerException"/> class.
+        /// </summary>
+        /// <param name="exc">The exc.</param>
+        /// <param name="values">The values.</param>
         public MoodAnalyzerException(string exc, Value_Exception values) : base(exc)
         {
             this.va = values;

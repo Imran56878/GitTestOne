@@ -4,10 +4,10 @@ namespace MoodAnalyzer
 {
     public class TestCases
     {
-        MoodAnalyser t1 = new MoodAnalyser("I am in happy mood");
-        MoodAnalyser t2 = new MoodAnalyser("I am in sad mood");
-        MoodAnalyser t3 = new MoodAnalyser();
-        MoodAnalyser d = new MoodAnalyser("");
+        MoodAnalyser testmood = new MoodAnalyser("I am in happy mood");
+        MoodAnalyser testsad = new MoodAnalyser("I am in sad mood");
+        MoodAnalyser testnull = new MoodAnalyser();
+        MoodAnalyser testempty = new MoodAnalyser("");
 
         [SetUp]
         public void Setup()
@@ -15,18 +15,31 @@ namespace MoodAnalyzer
             Console.WriteLine("");
         }
 
+        /// <summary>It will 
+        /// check happy message
+        /// </summary>>
         [Test]
         public void HappyMessage()
         {
-            Assert.AreEqual("happy", t1.Mood());
+            Assert.AreEqual("happy", testmood.Mood());
 
         }
 
+        /// <summary>
+        /// It will check 
+        /// sad message
+        /// </summary>>
         [Test]
         public void SadMessage()
         {
-            Assert.AreEqual("sad", t2.Mood());
+            Assert.AreEqual("sad", testsad.Mood());
         }
+
+        /// <summary>
+        /// this is for 
+        /// null value and it
+        /// will check null exception
+        /// </summary>
         [Test]
         public void Nullexception()
         {
@@ -35,57 +48,88 @@ namespace MoodAnalyzer
             Assert.AreEqual(MoodAnalyzerException.Value_Exception.Null_Reference_Exception, val.va);
 
         }
-
+        /// <summary>
+        /// this is for empty message
+        /// and handle empty exception
+        /// </summary>
         [Test]
         public void EmptyException()
         {
 
             MoodAnalyser moodtest = new MoodAnalyser("");
-            var val2 = Assert.Throws<MoodAnalyzerException>(() => moodtest.Mood());
-            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val2.va);
+            var val = Assert.Throws<MoodAnalyzerException>(() => moodtest.Mood());
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val.va);
         }
+        /// <summary>
+        /// it will check the 
+        /// object of same class 
+        /// </summary>
         [Test]
         public void CheckObject()
         {
-            MoodAnalyser testmood = new MoodAnalyser();
-            var test = testmood.Equals(testmood);
+            MoodAnalyser moodtest = new MoodAnalyser();
+            var test = moodtest.Equals(moodtest);
             Assert.IsTrue(test);
             Console.WriteLine(test);
 
         }
+        /// <summary>
+        /// This is for checking 
+        /// constructor with given
+        /// paramter exist or not  
+        /// </summary>
         [Test]
         public void CheckConstructorParameter()
         {
-            var val3 = Assert.Throws<MoodAnalyzerException>(() => d.WrongConstructorInfo(6867));
-            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error, val3.va);
+            var val = Assert.Throws<MoodAnalyzerException>(() => testempty.WrongConstructorInfo(6867));
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error, val.va);
         }
+        /// <summary>
+        /// It will check the specific
+        /// method of given class
+        /// exist 
+        /// </summary>
         [Test]
         public void CheckMoodMethod()
         {
-            t3.MethodCheck();
+            testnull.MethodCheck();
         }
+        /// <summary>
+        /// It will check the metrhod 
+        /// is not exist
+        /// and handle exception
+        /// </summary>
         [Test]
         public void MethodNotFound()
         {
-            var val4 = Assert.Throws<MoodAnalyzerException>(() => t1.NOMethod());
-            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Method_Error, val4.va);
+            var val = Assert.Throws<MoodAnalyzerException>(() => testmood.NOMethod());
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Method_Error, val.va);
         }
+        /// <summary>
+        /// It check the happy message using
+        /// reflector concept
+        /// </summary>
         [Test]
         public void MessageReflector()
         {
-            MoodAnalyserReflector m = new MoodAnalyserReflector();
-            m.ShowMessage("I am happy ");
+            MoodAnalyserReflector analyse = new MoodAnalyserReflector();
+            analyse.ShowMessage("I am happy ");
         }
+        /// <summary>
+        /// It uses the reflector 
+        /// concept to handle 
+        /// null exception
+        /// </summary>
         [Test]
         public void ReflectorNullRException()
         {
-            MoodAnalyserReflector m1 = new MoodAnalyserReflector();
+            MoodAnalyserReflector moodrefletor = new MoodAnalyserReflector();
             /*  var val4 = Assert.Throws<MoodAnalyzerException>(() => m1.ShowMessage (null));
               Assert.AreEqual(MoodAnalyzerException.Value_Exception.Null_Reference_Exception, val4.va);
   */
             try
             {
-                m1.ShowMessage(null);
+                moodrefletor.ShowMessage(null);
             }
             catch (Exception e)
             {
@@ -93,13 +137,17 @@ namespace MoodAnalyzer
             }
 
         }
+        /// <summary>
+        /// using reflector 
+        /// it handle Empty message exception
+        /// </summary>
         [Test]
         public void ReflectorEmptyException()
         {
-            MoodAnalyserReflector m = new MoodAnalyserReflector();
-            var val6 = Assert.Throws<MoodAnalyzerException>(() => m.ShowMessage(""));
-            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val6.va);
-            Console.WriteLine(val6);
+            MoodAnalyserReflector mreflector = new MoodAnalyserReflector();
+            var val = Assert.Throws<MoodAnalyzerException>(() => mreflector.ShowMessage(""));
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.Empty_Exception, val.va);
+            Console.WriteLine(val);
         }
 
     }
