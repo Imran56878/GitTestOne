@@ -85,6 +85,18 @@ namespace MoodAnalyzer
             Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error, val.va);
         }
         /// <summary>
+        /// Checks the method with
+        /// the given type parameter
+        /// is not found .
+        /// </summary>
+        [Test]
+        public void CheckMethodParameter()
+        {
+
+            var val = Assert.Throws<MoodAnalyzerException>(() => testempty.WrongMethodInfo(6867));
+            Assert.AreEqual(MoodAnalyzerException.Value_Exception.No_Such_Method_Error, val.va);
+        }
+        /// <summary>
         /// It will check the specific
         /// method of given class
         /// exist 
@@ -110,10 +122,20 @@ namespace MoodAnalyzer
         /// reflector concept
         /// </summary>
         [Test]
-        public void MessageReflector()
+        public void MessageHappyReflector()
         {
             MoodAnalyserReflector analyse = new MoodAnalyserReflector();
             analyse.ShowMessage("I am happy ");
+        }
+        /// <summary>
+        /// It check the sad message using
+        /// reflector concept
+        /// </summary>
+        [Test]
+        public void MessageSadReflector()
+        {
+            MoodAnalyserReflector analyse = new MoodAnalyserReflector();
+            analyse.ShowMessage("I am sad ");
         }
         /// <summary>
         /// It uses the reflector 

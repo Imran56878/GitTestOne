@@ -66,6 +66,25 @@ namespace MoodAnalyzer
             }
             throw new MoodAnalyzerException("No_Such_Constructor_Found", MoodAnalyzerException.Value_Exception.No_Such_Constructor_Error);
         }
+        public bool WrongMethodInfo(double a)
+        {
+            Type t = Type.GetType("MoodAnalyzer.MoodAnalyserReflector");
+            MethodInfo[] methods = t.GetMethods();
+            foreach (MethodInfo method in methods)
+            {
+                ParameterInfo[] parameters = method.GetParameters();
+                foreach (ParameterInfo parameter in parameters)
+                {
+                    Console.WriteLine(parameter.ParameterType);
+                    if (parameter.ParameterType.Equals(a.GetType()))
+                    {
+                        Console.WriteLine(true);
+                        return true;
+                    }
+                }
+            }
+            throw new MoodAnalyzerException("No_Such_Method_Found", MoodAnalyzerException.Value_Exception.No_Such_Method_Error);
+        }
         /// <summary>invoking specific method </summary>>
         public void MethodCheck()
         {
